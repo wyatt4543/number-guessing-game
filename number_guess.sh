@@ -73,3 +73,14 @@ done
 
 # print the win message
 echo "You guessed it in $NUMBER_OF_GUESSES tries. The secret number was $SECRET_NUMBER. Nice job!"
+
+# increase the number of games played for the user by 1
+(( GAMES_PLAYED++ ))
+$PSQL "UPDATE user_information SET games_played = $GAMES_PLAYED WHERE username = $USERNAME;"
+
+# change the player's best game if the number of guesses is lower than the best game's guesses
+if (( BEST_GAME == 0 || NUMBER_OF_GUESSES < BEST_GAME ));
+then
+  # update the player's best game in the database
+  $PSQL "UPDATE user_information SET best_game = $BEST_GAME WHERE username = $USERNAME;"
+fi
