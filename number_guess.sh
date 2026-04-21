@@ -13,14 +13,11 @@ USERNAME=$($PSQL "SELECT username FROM user_information WHERE username='$USER'")
 # if the user does not exist
 if [[ -z $USERNAME ]]
 then
-  # set the username variable to the new value
-  USERNAME=$USER
-
   # insert the user's username into the database
-  echo "$($PSQL "INSERT INTO user_information(username) VALUES('$USERNAME')")"
+  USERNAME="$($PSQL "INSERT INTO user_information(username) VALUES('$USERNAME')")"
 
   # print the welcome message
-  echo Welcome, $USERNAME! It looks like this is your first time here.
+  echo "Welcome, $USERNAME! It looks like this is your first time here."
 else
   # if the user exists
   # find the number of games the user has played
@@ -30,11 +27,11 @@ else
   BEST_GAME=$($PSQL "SELECT best_game FROM user_information WHERE username='$USERNAME'")
 
   # print the welcome message
-  echo Welcome back, $USERNAME! You have played $GAMES_PLAYED games, and your best game took $BEST_GAME guesses.
+  echo "Welcome back, $USERNAME! You have played $GAMES_PLAYED games, and your best game took $BEST_GAME guesses."
 fi
 
 # ask for the user to guess the number
-echo Guess the secret number between 1 and 1000:
+echo "Guess the secret number between 1 and 1000:"
 READ USER_GUESS
 
 # while the guess is not an integer
