@@ -33,5 +33,6 @@ else
   echo Welcome back, $USERNAME! You have played $GAMES_PLAYED games, and your best game took $BEST_GAME guesses.
 fi
 
-
-
+# ask for the user to guess the number
+echo Guess the secret number between 1 and 1000:
+READ USER_GUESS
