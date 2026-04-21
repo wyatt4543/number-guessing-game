@@ -42,4 +42,5 @@ while ! [[ $USER_GUESS =~ ^[0-9]+$ ]];
 do
   # print wrong input error
   echo "That is not an integer, guess again:"
+  read USER_GUESS
 done
