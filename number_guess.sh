@@ -15,9 +15,9 @@ if [[ -z $USERNAME ]]
 then
    # set the username variable to the new value
   USERNAME=$USER
-  
+
   # insert the user's username into the database
-  $($PSQL "INSERT INTO user_information(username) VALUES('$USERNAME')")
+  $PSQL "INSERT INTO user_information(username) VALUES('$USERNAME')"
 
   # print the welcome message
   echo "Welcome, $USERNAME! It looks like this is your first time here."
@@ -38,7 +38,4 @@ echo "Guess the secret number between 1 and 1000:"
 read USER_GUESS
 
 # while the guess is not an integer
-if ! [[ $USER_GUESS =~ ^[0-9]+$ ]]; then
-  # print wrong input error
-  echo "That is not an integer, guess again:"
-fi
+
