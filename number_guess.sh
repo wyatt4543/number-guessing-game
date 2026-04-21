@@ -36,3 +36,9 @@ fi
 # ask for the user to guess the number
 echo Guess the secret number between 1 and 1000:
 READ USER_GUESS
+
+# while the guess is not an integer
+if ! [[ $USER_GUESS =~ ^[0-9]+$ ]]; then
+  # print wrong input error
+  echo "That is not an integer, guess again:"
+fi
