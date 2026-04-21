@@ -42,9 +42,8 @@ NUMBER_OF_GUESSES=0
 # while the guess is not equal to the answer
 while (( USER_GUESS != SECRET_NUMBER ));
 do
-  # increment the number of guesses by one
+  # get the user's guess
   read USER_GUESS
-  (( NUMBER_OF_GUESSES++ ))
 
   # while the guess is not an integer
   while ! [[ $USER_GUESS =~ ^[0-9]+$ ]];
@@ -53,6 +52,9 @@ do
     echo "That is not an integer, guess again:"
     read USER_GUESS
   done
+
+  # increment the number of guesses by one
+  (( NUMBER_OF_GUESSES++ ))
 
   # if the guess is less than the answer
   if (( USER_GUESS < SECRET_NUMBER ));
