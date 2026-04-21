@@ -38,7 +38,7 @@ echo "Guess the secret number between 1 and 1000:"
 read USER_GUESS
 
 # create a variable to store the number of guesses
-NUMBER_OF_GUESSES=1
+NUMBER_OF_GUESSES=0
 
 # while the guess is not equal to the answer
 while (( USER_GUESS != SECRET_NUMBER ));
@@ -70,6 +70,9 @@ do
   # increment the number of guesses by one
   (( NUMBER_OF_GUESSES++ ))
 done
+
+# increment the number of guesses by one
+(( NUMBER_OF_GUESSES++ ))
 
 # print the win message
 echo "You guessed it in $NUMBER_OF_GUESSES tries. The secret number was $SECRET_NUMBER. Nice job!"
