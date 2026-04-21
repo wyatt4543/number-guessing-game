@@ -35,7 +35,6 @@ fi
 
 # ask for the user to guess the number
 echo "Guess the secret number between 1 and 1000:"
-read USER_GUESS
 
 # create a variable to store the number of guesses
 NUMBER_OF_GUESSES=0
@@ -43,6 +42,10 @@ NUMBER_OF_GUESSES=0
 # while the guess is not equal to the answer
 while (( USER_GUESS != SECRET_NUMBER ));
 do
+  # increment the number of guesses by one
+  read USER_GUESS
+  (( NUMBER_OF_GUESSES++ ))
+
   # while the guess is not an integer
   while ! [[ $USER_GUESS =~ ^[0-9]+$ ]];
   do
@@ -56,7 +59,6 @@ do
   then
     # prompt the user to guess higher
     echo "It's higher than that, guess again:"
-    read USER_GUESS
   fi
 
   # if the guess is greater than the answer
@@ -64,15 +66,8 @@ do
   then
     # prompt the user to guess lower
     echo "It's lower than that, guess again:"
-    read USER_GUESS
   fi
-
-  # increment the number of guesses by one
-  (( NUMBER_OF_GUESSES++ ))
 done
-
-# increment the number of guesses by one
-(( NUMBER_OF_GUESSES++ ))
 
 # print the win message
 echo "You guessed it in $NUMBER_OF_GUESSES tries. The secret number was $SECRET_NUMBER. Nice job!"
