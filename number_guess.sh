@@ -38,4 +38,8 @@ echo "Guess the secret number between 1 and 1000:"
 read USER_GUESS
 
 # while the guess is not an integer
-
+while ! [[ $USER_GUESS =~ ^[0-9]+$ ]];
+do
+  # print wrong input error
+  echo "That is not an integer, guess again:"
+done
