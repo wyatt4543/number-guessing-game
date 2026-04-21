@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PSQL="psql --username=freecodecamp --dbname=number_guess -t --no-align -c"
+PSQL="psql --username=freecodecamp --dbname=number_guess -t --no-align -q -c"
 SECRET_NUMBER=$((1 + RANDOM % 1000))
 
 # get the user's username
