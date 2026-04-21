@@ -13,8 +13,11 @@ USERNAME=$($PSQL "SELECT username FROM user_information WHERE username='$USER'")
 # if the user does not exist
 if [[ -z $USERNAME ]]
 then
+   # set the username variable to the new value
+  USERNAME=$USER
+  
   # insert the user's username into the database
-  USERNAME="$($PSQL "INSERT INTO user_information(username) VALUES('$USERNAME')")"
+  $($PSQL "INSERT INTO user_information(username) VALUES('$USERNAME')")
 
   # print the welcome message
   echo "Welcome, $USERNAME! It looks like this is your first time here."
